@@ -1,0 +1,33 @@
+#Run the following commands to install SourceGuardian Loader on ubuntu server for php 8.1 version farzad_kb 
+#The example below is for PHP 7.2. Please use the version that applies to your situation.
+
+sudo su
+mkdir /usr/local/sourceguardian
+cd /usr/local/sourceguardian
+curl https://www.sourceguardian.com/loaders/download/loaders.linux-x86_64.tar.gz --output loaders.linux-x86_64.tar.gz
+tar xzf loaders.linux-x86_64.tar.gz
+cp ixed.8.1.lin /usr/lib64/php/modules/
+
+cd /etc/php.d/
+
+#Content for sourceguardian.ini file:
+echo "[sourceguardian]" > sourceguardian.ini
+echo "zend_extension=/usr/lib64/php/modules/ixed.7.2.lin" >> sourceguardian.ini
+
+systemctl restart php-fpm.service
+
+#### Example for PHP 8.1 ####
+sudo su
+mkdir /usr/local/sourceguardian
+cd /usr/local/sourceguardian
+curl https://www.sourceguardian.com/loaders/download/loaders.linux-x86_64.tar.gz --output loaders.linux-x86_64.tar.gz
+tar xzf loaders.linux-x86_64.tar.gz
+cp ixed.8.1.lin /usr/lib64/php/modules/
+
+cd /etc/php.d/
+
+#Content for sourceguardian.ini file:
+echo "[sourceguardian]" > sourceguardian.ini
+echo "zend_extension=/usr/lib64/php/modules/ixed.8.1.lin" >> sourceguardian.ini
+
+systemctl restart php-fpm.service
